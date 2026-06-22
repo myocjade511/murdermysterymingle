@@ -234,24 +234,23 @@ footer .footer-links{display:flex;justify-content:center;gap:2rem;margin-bottom:
 </section>
 
 <style>
-.testimonials-masonry{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;max-width:1000px;margin:0 auto}
-.testimonial-img-wrap{border-radius:var(--radius);overflow:hidden;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.02);transition:all .4s ease;position:relative}
-.testimonial-img-wrap:hover{transform:translateY(-6px) scale(1.01);border-color:rgba(201,168,76,.3);box-shadow:0 20px 60px rgba(201,168,76,.1)}
+.testimonials-feed{max-width:600px;margin:0 auto;display:flex;flex-direction:column;gap:1.5rem}
+.testimonial-img-wrap{border-radius:var(--radius);overflow:hidden;border:1px solid rgba(255,255,255,.08);background:#0d0d1a;transition:all .4s ease;position:relative;box-shadow:0 2px 20px rgba(0,0,0,.3)}
+.testimonial-img-wrap:hover{transform:translateY(-4px) scale(1.01);border-color:rgba(201,168,76,.3);box-shadow:0 20px 60px rgba(201,168,76,.1)}
 .testimonial-img-wrap img{width:100%;height:auto;display:block;object-fit:contain}
-.testimonial-img-wrap.tall{grid-row:span 2}
 </style>
 <section class="section" id="testimonials" style="background:linear-gradient(180deg,var(--dark),var(--primary),var(--dark));position:relative;overflow:hidden">
 <div class="container" style="position:relative;z-index:1">
 <p class="subtitle text-center">Testimonials</p>
 <h1 class="text-center" style="font-size:clamp(1.8rem,3vw,2.5rem);margin-bottom:1rem">Real guests, real reactions</h1>
 <p class="text-center" style="color:var(--gray);margin-bottom:3rem;font-size:.95rem">Actual reviews from actual hosts — straight from their phones</p>
-<div class="testimonials-masonry">
-<div class="testimonial-img-wrap tall"><img src="images/testimonial-1.png" alt="Text message testimonial screenshot 1" loading="lazy"></div>
+<div class="testimonials-feed">
+<div class="testimonial-img-wrap"><img src="images/testimonial-1.png" alt="Text message testimonial screenshot 1" loading="lazy"></div>
 <div class="testimonial-img-wrap"><img src="images/testimonial-2.png" alt="Text message testimonial screenshot 2" loading="lazy"></div>
 <div class="testimonial-img-wrap"><img src="images/testimonial-3.jpeg" alt="Text message testimonial screenshot 3" loading="lazy"></div>
 <div class="testimonial-img-wrap"><img src="images/testimonial-4.jpeg" alt="Text message testimonial screenshot 4" loading="lazy"></div>
 <div class="testimonial-img-wrap"><img src="images/testimonial-5.jpeg" alt="Text message testimonial screenshot 5" loading="lazy"></div>
-<div class="testimonial-img-wrap tall"><img src="images/testimonial-6.jpeg" alt="Text message testimonial screenshot 6" loading="lazy"></div>
+<div class="testimonial-img-wrap"><img src="images/testimonial-6.jpeg" alt="Text message testimonial screenshot 6" loading="lazy"></div>
 </div>
 </div>
 </section>
