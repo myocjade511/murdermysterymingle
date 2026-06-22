@@ -1,0 +1,6 @@
+{
+  "version": 2,
+  "buildCommand": "cp -r ./* .",
+  "outputDirectory": ".",
+  "framework": null
+}
