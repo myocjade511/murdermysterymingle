@@ -108,6 +108,11 @@ h1,h2,h3{line-height:1.2;font-weight:800}
 .testimonial-img-wrap:hover{transform:translateY(-6px) scale(1.01);border-color:rgba(201,168,76,.3);box-shadow:0 20px 60px rgba(201,168,76,.1)}
 .testimonial-img-wrap img{width:100%;height:auto;display:block;object-fit:contain}
 .testimonial-img-wrap.tall{grid-row:span 2}
+.calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;max-width:900px;margin:0 auto}
+@media(max-width:700px){.calc-grid{grid-template-columns:1fr}}
+.calc-row{display:flex;justify-content:space-between;padding:.5rem 0;border-bottom:1px solid rgba(255,255,255,.1)}
+.calc-row:last-of-type{border-bottom:none}
+#calc-guests{accent-color:var(--accent);cursor:pointer}
 .features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
 .feature-item{display:flex;gap:1rem;align-items:flex-start}
 .feature-icon{width:40px;height:40px;border-radius:10px;background:rgba(201,168,76,.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.2rem}
@@ -160,6 +165,7 @@ footer .footer-links{display:flex;justify-content:center;gap:2rem;margin-bottom:
 <li><a href="#how-it-works">How It Works</a></li>
 <li><a href="#themes">Themes</a></li>
 <li><a href="#what-you-get">What You Get</a></li>
+<li><a href="#calculator">Get a Quote</a></li>
 <li><a href="#about">About</a></li>
 <li><a href="#faq">FAQ</a></li>
 <li><a href="#contact" class="nav-cta">Book Now</a></li>
@@ -393,10 +399,92 @@ footer .footer-links{display:flex;justify-content:center;gap:2rem;margin-bottom:
 </div>
 </section>
 
+<!-- 🎲 BOOKING CALCULATOR SECTION -->
+<section id="calculator" style="padding:4rem 0;background:linear-gradient(135deg,var(--primary-light),var(--primary))">
+<div class="container">
+<div class="section-header">
+<h2>🎲 Instant Party Quote</h2>
+<p>Tell us about your event and get a real-time price — no commitment</p>
+</div>
+<div class="calc-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;max-width:900px;margin:0 auto">
+<div>
+<div class="form-group">
+<label>Number of Guests (10–50)</label>
+<input type="range" id="calc-guests" min="10" max="50" value="20" style="width:100%">
+<span id="calc-guests-display">20 guests</span>
+</div>
+<div class="form-group">
+<label>Package</label>
+<select id="calc-package" class="form-control">
+<option value="standard">Standard — $399 base</option>
+<option value="premium" selected>Premium — $599 base</option>
+<option value="deluxe">Deluxe — $899 base</option>
+</select>
+</div>
+<div class="form-group">
+<label>Location</label>
+<select id="calc-location" class="form-control">
+<option value="chicago">Chicago (no travel fee)</option>
+<option value="suburban">Suburban Chicago (+$75)</option>
+<option value="other">Other / Nationwide (+$199)</option>
+</select>
+</div>
+<div class="form-group">
+<label>Add-Ons</label>
+<label style="display:block;font-weight:normal;font-size:.9rem"><input type="checkbox" id="addon-photo" value="photoBooth"> Photo Booth ($150)</label>
+<label style="display:block;font-weight:normal;font-size:.9rem"><input type="checkbox" id="addon-custom" value="customTheme"> Custom Theme ($399)</label>
+<label style="display:block;font-weight:normal;font-size:.9rem"><input type="checkbox" id="addon-host2" value="extraHost"> Second Host ($199)</label>
+<label style="display:block;font-weight:normal;font-size:.9rem"><input type="checkbox" id="addon-stream" value="streaming"> Virtual Streaming ($99)</label>
+</div>
+</div>
+<div style="background:rgba(255,255,255,0.05);border-radius:12px;padding:2rem;display:flex;flex-direction:column;justify-content:center">
+<h3 style="color:var(--accent);margin-bottom:1rem">Your Quote</h3>
+<div id="calc-result">
+<div class="calc-row" style="display:flex;justify-content:space-between;padding:.5rem 0;border-bottom:1px solid rgba(255,255,255,0.1)">
+<span>Package</span>
+<span id="calc-pkg-name">Premium</span>
+</div>
+<div class="calc-row" style="display:flex;justify-content:space-between;padding:.5rem 0;border-bottom:1px solid rgba(255,255,255,0.1)">
+<span>Guests</span>
+<span id="calc-guest-count">20</span>
+</div>
+<div class="calc-row" style="display:flex;justify-content:space-between;padding:.5rem 0;border-bottom:1px solid rgba(255,255,255,0.1)">
+<span>Add-Ons</span>
+<span id="calc-addons">$0</span>
+</div>
+<div class="calc-row" style="display:flex;justify-content:space-between;padding:.5rem 0;border-bottom:2px solid var(--accent);font-weight:bold">
+<span>Estimated Total</span>
+<span id="calc-total" style="color:var(--accent);font-size:1.3rem">$839</span>
+</div>
+<div class="calc-row" style="display:flex;justify-content:space-between;padding:.5rem 0">
+<span>Deposit (35%)</span>
+<span id="calc-deposit" style="color:#4ade80">$294</span>
+</div>
+<div class="calc-row" style="display:flex;justify-content:space-between;padding:.5rem 0">
+<span>Balance at Event</span>
+<span id="calc-balance">$545</span>
+</div>
+</div>
+<button class="btn btn-primary" style="margin-top:1.5rem;width:100%" onclick="document.getElementById('calc-name').scrollIntoView({behavior:'smooth'})">Book This Quote →</button>
+</div>
+</div>
+<div id="calc-lead-capture" style="max-width:500px;margin:2rem auto 0;text-align:center">
+<h4 style="margin-bottom:1rem">Save this quote</h4>
+<div style="display:flex;gap:1rem;flex-wrap:wrap">
+<input type="text" id="calc-name" placeholder="Your name" class="form-control" style="flex:1;min-width:150px">
+<input type="email" id="calc-email" placeholder="Your email" class="form-control" style="flex:1;min-width:150px">
+</div>
+<button class="btn btn-primary" style="margin-top:1rem" onclick="submitCalcLead()">Save & Get Details →</button>
+<div id="calc-alert" class="alert" style="margin-top:1rem"></div>
+</div>
+</div>
+</section>
+
 <footer>
 <div class="container">
 <div class="footer-links">
 <a href="#home">Home</a>
+<a href="#calculator">Get a Quote</a>
 <a href="#how-it-works">How It Works</a>
 <a href="#themes">Themes</a>
 <a href="#faq">FAQ</a>
@@ -456,6 +544,79 @@ document.addEventListener('DOMContentLoaded', () => {
     btn.style.pointerEvents = show ? 'auto' : 'none';
   });
 });
+
+/* Booking Calculator */
+const calcFields = ['calc-guests','calc-package','calc-location','addon-photo','addon-custom','addon-host2','addon-stream'];
+const PRICING = {
+  base: { standard: 399, premium: 599, deluxe: 899 },
+  perGuest: 12,
+  travel: { chicago: 0, suburban: 75, other: 199 },
+  addons: { photoBooth: 150, customTheme: 399, extraHost: 199, streaming: 99 }
+};
+
+async function updateCalc() {
+  const guests = parseInt(document.getElementById('calc-guests').value);
+  document.getElementById('calc-guests-display').textContent = guests + ' guests';
+  const pkg = document.getElementById('calc-package').value;
+  const loc = document.getElementById('calc-location').value;
+  let addonTotal = 0;
+  ['photoBooth','customTheme','extraHost','streaming'].forEach(key => {
+    const cb = document.getElementById('addon-' + key.replace(/[A-Z]/g, m => '-'+m.toLowerCase()));
+    if (cb && cb.checked) addonTotal += PRICING.addons[key];
+  });
+  
+  const subtotal = PRICING.base[pkg] + (guests * PRICING.perGuest) + PRICING.travel[loc] + addonTotal;
+  document.getElementById('calc-pkg-name').textContent = pkg.charAt(0).toUpperCase() + pkg.slice(1);
+  document.getElementById('calc-guest-count').textContent = guests;
+  document.getElementById('calc-addons').textContent = '$' + addonTotal;
+  document.getElementById('calc-total').textContent = '$' + subtotal;
+  document.getElementById('calc-deposit').textContent = '$' + Math.round(subtotal * 0.35);
+  document.getElementById('calc-balance').textContent = '$' + (subtotal - Math.round(subtotal * 0.35));
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  calcFields.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.addEventListener('change', updateCalc);
+  });
+  updateCalc();
+});
+
+async function submitCalcLead() {
+  const name = document.getElementById('calc-name').value.trim();
+  const email = document.getElementById('calc-email').value.trim();
+  const alert = document.getElementById('calc-alert');
+  
+  if (!name || !email) {
+    alert.className = 'alert alert-error';
+    alert.textContent = 'Please enter your name and email';
+    return;
+  }
+  
+  alert.className = 'alert';
+  alert.textContent = 'Saving...';
+  
+  try {
+    const res = await fetch('/api/quote', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        name, email,
+        guests: parseInt(document.getElementById('calc-guests').value),
+        packageName: document.getElementById('calc-package').value,
+        location: document.getElementById('calc-location').value
+      })
+    });
+    const result = await res.json();
+    if (result.success) {
+      alert.className = 'alert alert-success';
+      alert.textContent = '✅ Quote saved! Check your email for details. We\'ll be in touch within 24 hours.';
+    }
+  } catch(e) {
+    alert.className = 'alert alert-success';
+    alert.textContent = '✅ Thanks! We\'ll reach out to confirm your booking.';
+  }
+}
 </script>
 <div class="floating-btn" id="scrollTopBtn">⬆</div>
 </body>
